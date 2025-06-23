@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getData } from "../service/Axios"; 
+import { getData } from "../service/Axios";
 
 const ProductContext = createContext();
 
@@ -21,8 +21,8 @@ export const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("Fetching products...");
-    
+    console.log("Fetching products 2times because strict mode ...");
+
     fetchProducts();
   }, []);
 
