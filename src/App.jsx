@@ -9,6 +9,10 @@ import Layout from "./components/Layout";
 import Products from "./pages/Products/Products";
 import { ProductProvider } from "./context/ProductContext";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import Movies from "./pages/Movies/Movies";
+import { MovieProvider } from "./context/MovieContext";
+import MovieDetalis from "./pages/MovieDetails/MovieDetalis";
+
 function App() {
   return (
     <BrowserRouter>
@@ -27,8 +31,18 @@ function App() {
           >
             <Route path=":id" element={<ProductDetail />} />
           </Route>
+          <Route
+            path="Movies"
+            element={
+              <MovieProvider>
+                <Movies />
+              </MovieProvider>
+            }
+          >
+            <Route path=":id" element={<MovieDetalis />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
-        
         </Route>
       </Routes>
     </BrowserRouter>

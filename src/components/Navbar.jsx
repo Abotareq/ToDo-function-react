@@ -39,6 +39,14 @@ function Navbar() {
                 Products
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/Movies"
+                className={({ isActive }) => (isActive ? "underline" : "")}
+              >
+                Movies
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>
