@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <>
       <header className="bg-blue-800 text-white px-6 py-4 shadow-md">
-        <nav className="flex justify-between items-center max-w-7xl mx-auto">
+        <nav className="flex justify-between items-center max-w-10xl mx-auto">
           <h1 className="text-2xl font-bold">My App</h1>
           <ul className="flex space-x-6 font-medium">
             <li>
@@ -29,6 +29,14 @@ function Navbar() {
                 className={({ isActive }) => (isActive ? "underline" : "")}
               >
                 Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Products"
+                className={({ isActive }) => (isActive ? "underline" : "")}
+              >
+                Products
               </NavLink>
             </li>
           </ul>
