@@ -4,6 +4,7 @@ import { getData } from "../service/Movies.js"; // assuming you have this
 const MovieContext = createContext();
 
 export function MovieProvider({ children }) {
+ 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
