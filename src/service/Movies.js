@@ -1,4 +1,4 @@
-import { tmdbClientAPI } from "../Client/movieClientAPI.js";
+import { tmdbClientAPI } from "../Client/axiosClientAPI.js";
 export async function getData(url) {
   return await tmdbClientAPI.get(url).then((response) => response.data);
 }
