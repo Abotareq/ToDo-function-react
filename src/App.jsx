@@ -14,6 +14,7 @@ import { MovieProvider } from "./context/MovieContext";
 import MovieDetalis from "./pages/MovieDetails/MovieDetalis";
 import { Provider } from "react-redux";
 import store from "./Redux/store.js";
+import FavMovies from "./pages/FavMovies/FavMovies";
 function App() {
   return (
     <Provider store={store}>
@@ -39,6 +40,16 @@ function App() {
               element={
                 <MovieProvider>
                   <Movies />
+                </MovieProvider>
+              }
+            >
+              <Route path=":id" element={<MovieDetalis />} />
+            </Route>
+                <Route
+              path="favMovies"
+              element={
+                <MovieProvider>
+                  <FavMovies />
                 </MovieProvider>
               }
             >

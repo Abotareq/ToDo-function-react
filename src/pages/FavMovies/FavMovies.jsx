@@ -3,18 +3,25 @@ import { useMovies } from "../../context/MovieContext";
 import MovieCard from "../../components/MovieCard";
 import { Link, Outlet, useParams } from "react-router-dom";
 import Loader from "../../components/Loader";
-
-export default function Movies() {
+import { useSelector } from "react-redux";
+export default function FavMovies() {
   const { movies, loading, error } = useMovies();
   const { id } = useParams();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; 
 
-  // Pagination logic
-  const totalPages = Math.ceil(movies.length / itemsPerPage);
+  const favMovies = useSelector((state) => state.fav.favs);
+
+  const itemsPerPage = 8;
+  const currentFavMovies = movies.filter((movie) =>
+    favMovies.some((fav) => fav.id === movie.id)
+  );
+  const totalPages = Math.ceil(currentFavMovies.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentMovies = movies.slice(startIndex, startIndex + itemsPerPage);
+  const currentMovies = currentFavMovies.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   if (loading) return <Loader />;
   if (error) return <p className="text-red-500 text-center">{error}</p>;
