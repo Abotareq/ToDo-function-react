@@ -12,40 +12,44 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Movies from "./pages/Movies/Movies";
 import { MovieProvider } from "./context/MovieContext";
 import MovieDetalis from "./pages/MovieDetails/MovieDetalis";
-
+import { Provider } from "react-redux";
+import store from "./Redux/store.js";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Registration />} />
-          <Route path="ToDo" element={<Home />} />
-          <Route path="Login" element={<Login />} />
-          <Route
-            path="Products"
-            element={
-              <ProductProvider>
-                <Products />
-              </ProductProvider>
-            }
-          >
-            <Route path=":id" element={<ProductDetail />} />
-          </Route>
-          <Route
-            path="Movies"
-            element={
-              <MovieProvider>
-                <Movies />
-              </MovieProvider>
-            }
-          >
-            <Route path=":id" element={<MovieDetalis />} />
-          </Route>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Registration />} />
+            <Route path="ToDo" element={<Home />} />
+            <Route path="Login" element={<Login />} />
 
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            <Route
+              path="Products"
+              element={
+                <ProductProvider>
+                  <Products />
+                </ProductProvider>
+              }
+            >
+              <Route path=":id" element={<ProductDetail />} />
+            </Route>
+            <Route
+              path="Movies"
+              element={
+                <MovieProvider>
+                  <Movies />
+                </MovieProvider>
+              }
+            >
+              <Route path=":id" element={<MovieDetalis />} />
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

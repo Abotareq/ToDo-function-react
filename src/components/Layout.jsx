@@ -2,9 +2,12 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useSelector } from "react-redux";
 export default function Layout() {
+  const language = useSelector((state) => state.language.currentLanguage);
+  console.log("Current Language:", language);
   return (
-    <>
+    <div dir={language === "ar" ? "rtl" : "ltr"}>
       {/* Navbar */}
       <Navbar />
 
@@ -15,6 +18,6 @@ export default function Layout() {
 
       {/* Footer */}
       <Footer />
-    </>
+    </div>
   );
 }

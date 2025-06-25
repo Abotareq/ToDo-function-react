@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import { useSelector } from "react-redux";
 export default function Registration() {
   const emailRef = useRef();
   const nameRef = useRef();
@@ -21,8 +21,7 @@ export default function Registration() {
     const confirmPassword = confirmPasswordRef.current.value;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
     if (!email || !emailRegex.test(email)) {
       return setError("Please enter a valid email.");
@@ -46,6 +45,7 @@ export default function Registration() {
 
     setSuccess("Registration successful!");
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-800 to-blue-900 text-white px-4">
