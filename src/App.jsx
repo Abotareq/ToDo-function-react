@@ -15,52 +15,59 @@ import MovieDetalis from "./pages/MovieDetails/MovieDetalis";
 import { Provider } from "react-redux";
 import store from "./Redux/store.js";
 import FavMovies from "./pages/FavMovies/FavMovies";
+import { QueryClientProviderComponent } from "./Client/queryClientProivder.jsx";
+import TV from "./pages/Tv/TV.jsx";
+import TVdetalis from "./pages/TVdetails/TVdetalis.jsx";
 function App() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Registration />} />
-            <Route path="ToDo" element={<Home />} />
-            <Route path="Login" element={<Login />} />
+    <QueryClientProviderComponent>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Registration />} />
+              <Route path="ToDo" element={<Home />} />
+              <Route path="Login" element={<Login />} />
 
-            <Route
-              path="Products"
-              element={
-                <ProductProvider>
-                  <Products />
-                </ProductProvider>
-              }
-            >
-              <Route path=":id" element={<ProductDetail />} />
+              <Route
+                path="Products"
+                element={
+                  <ProductProvider>
+                    <Products />
+                  </ProductProvider>
+                }
+              >
+                <Route path=":id" element={<ProductDetail />} />
+              </Route>
+              <Route
+                path="Movies"
+                element={
+                  <MovieProvider>
+                    <Movies />
+                  </MovieProvider>
+                }
+              >
+                <Route path=":id" element={<MovieDetalis />} />
+              </Route>
+              <Route
+                path="favMovies"
+                element={
+                  <MovieProvider>
+                    <FavMovies />
+                  </MovieProvider>
+                }
+              >
+                <Route path=":id" element={<MovieDetalis />} />
+              </Route>
+              <Route path="tv" element={<TV />}>
+                <Route path=":id" element={<TVdetalis />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route
-              path="Movies"
-              element={
-                <MovieProvider>
-                  <Movies />
-                </MovieProvider>
-              }
-            >
-              <Route path=":id" element={<MovieDetalis />} />
-            </Route>
-                <Route
-              path="favMovies"
-              element={
-                <MovieProvider>
-                  <FavMovies />
-                </MovieProvider>
-              }
-            >
-              <Route path=":id" element={<MovieDetalis />} />
-            </Route>
-
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </QueryClientProviderComponent>
   );
 }
 

@@ -15,75 +15,51 @@ function Navbar() {
     dispatch(setLanguage(newLang));
   };
 
+  const links = [
+    { name: "Registration", to: "/" },
+    { name: "ToDo", to: "/ToDo" },
+    { name: "Login", to: "/Login" },
+    { name: "Products", to: "/Products" },
+    { name: "Movies", to: "/Movies" },
+    { name: "Fav", to: "/favMovies" },
+    { name: "TV", to: "/tv" },
+  ];
+
   return (
-    <>
-      <header className="bg-blue-800 text-white px-6 py-4 shadow-md">
-        <nav className="flex justify-between items-center max-w-10xl mx-auto">
-          <h1 className="text-2xl font-bold">My App</h1>
+    <header className="bg-gray-800 text-gray-200 shadow-sm">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <h1 className="text-xl font-bold tracking-wide text-gray-100">
+          🎬 My App
+        </h1>
 
-          {/* Globe Icon for Language Toggle */}
-          <FaGlobe
-            onClick={toggleLanguage}
-            size={32}
-            className="cursor-pointer"
-            title={`Switch to ${
-              currentLanguage === "ar" ? "English" : "Arabic"
-            }`}
-          />
+        <ul className="flex items-center gap-5 text-sm font-medium">
+          {links.map((link) => (
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  `transition-all duration-200 hover:text-white ${
+                    isActive ? "text-blue-400 font-semibold underline" : ""
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
 
-          <ul className="flex space-x-6 gap-x-5 font-medium">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "underline" : "")}
-              >
-                Registration
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/ToDo"
-                className={({ isActive }) => (isActive ? "underline" : "")}
-              >
-                ToDo
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Login"
-                className={({ isActive }) => (isActive ? "underline" : "")}
-              >
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Products"
-                className={({ isActive }) => (isActive ? "underline" : "")}
-              >
-                Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Movies"
-                className={({ isActive }) => (isActive ? "underline" : "")}
-              >
-                Movies
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/favMovies"
-                className={({ isActive }) => (isActive ? "underline" : "")}
-              >
-                Fav
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    </>
+        <button
+          onClick={toggleLanguage}
+          className="ml-4 text-gray-300 hover:text-white transition"
+          title={`Switch to ${
+            currentLanguage === "ar" ? "English" : "Arabic"
+          }`}
+        >
+          <FaGlobe size={22} />
+        </button>
+      </div>
+    </header>
   );
 }
 

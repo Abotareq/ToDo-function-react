@@ -12,7 +12,7 @@ export default function Layout() {
       <Navbar />
 
       {/* Page Content */}
-      <main className="p-6 bg-gray-100 min-h-[calc(100vh-80px)]">
+      <main className="p-6 bg-gray-500 min-h-screen">
         <Outlet />
       </main>
 
