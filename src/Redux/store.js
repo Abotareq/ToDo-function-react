@@ -5,7 +5,7 @@ const store = configureStore({
   reducer: {
     language: languageReducer,
     fav: favReducer,
-  },
+  }, 
 });
 
 export default store;

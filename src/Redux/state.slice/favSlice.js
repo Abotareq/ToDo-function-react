@@ -8,6 +8,7 @@ const favSlice = createSlice({
     addFav: (state, action) => {
       state.favs.push(action.payload);
     },
+
     removeFav: (state, action) => {
       state.favs = state.favs.filter((fav) => fav.id !== action.payload.id);
     },

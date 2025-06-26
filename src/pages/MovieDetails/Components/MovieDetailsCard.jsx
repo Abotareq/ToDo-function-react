@@ -10,7 +10,7 @@ function MovieDetailsCard({ movie }) {
     state.fav.favs.find((fav) => fav.id === movie.id)
   );
 
-  const [liked, setLiked] = useState(!!currentFav);
+  const [liked, setLiked] = useState(currentFav);
 
   const toggleLike = () => {
     if (liked) {
